@@ -1,0 +1,28 @@
+.dia{
+    font-family: 'Dancing Script', cursive;
+}
+
+
+
+.cartita{
+    font-family: 'Josefin Sans', sans-serif;
+    height: 3rem;
+    width: 20rem;
+    -webkit-box-shadow: 9px 10px 5px 0px rgba(102,102,102,0.48);
+    -moz-box-shadow: 9px 10px 5px 0px rgba(102,102,102,0.48);
+    box-shadow: 9px 10px 5px 0px rgba(102,102,102,0.48);
+}
+
+.contenedor{
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    margin: 5rem;
+}
+
+.switch{
+    background-color:#8f6277 !important
+}
+
