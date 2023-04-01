@@ -5,3 +5,10 @@
     width: 20%;
     
 }
+
+.active{
+    border: 1px solid #fcb4aa;
+    border-radius: 10px;
+    margin-left: 5rem;
+    margin-right: 5rem;
+}
