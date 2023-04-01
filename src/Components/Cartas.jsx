@@ -4,8 +4,11 @@ import TextArea from "antd/es/input/TextArea";
 import { FrownOutlined, MehOutlined, SmileOutlined } from '@ant-design/icons';
 import { Rate } from 'antd';
 import { useState } from 'react';
-import { Switch } from 'antd';
+import { Switch , Button} from 'antd';
 import useLocalStorage from "./useLocalStorage";
+import { BsCheckLg } from 'react-icons/bs';
+
+
 
 const desc = ['Terrible', 'Malo', 'Normal', 'Bien', 'Hermoso'];
 
@@ -35,9 +38,22 @@ export default function Carta(){
         return(`Hoy es ${diaActual}`); // muestra el día actual en la consola
       }
 
+      
       const [misMetas, setMisMetas] = useLocalStorage("metas","")
       const [miEnergia, setMiEnergia] = useLocalStorage("energia",1)
       const [miHumor, setMiHumor] = useLocalStorage("humor",1)
+      const [metas, setMetas] = useState("")
+
+    
+
+      function valueMetas(e){
+      setMetas(e.target.value)
+      setMisMetas(e.target.value)
+      }
+
+      function handleMetas(){
+      setMetas("")
+      }
 
     return(
         
@@ -62,8 +78,11 @@ export default function Carta(){
                 <div class="card-body">
                     <h5 class="card-title ">Mis metas hoy</h5>
                     <p class="card-text">
-                        <TextArea defaultValue={misMetas} onChange={(e)=>setMisMetas(e.target.value)}/>
+                        <TextArea value={metas}  placeholder="Escribí tus metas" onChange={(e)=>valueMetas(e)}/>
                     </p>
+                    <Button type="primary" shape="circle" className="boton" onClick={handleMetas}>
+                        <BsCheckLg/>
+                    </Button>
                 </div>
                 </div>
             </div>
@@ -86,16 +105,6 @@ export default function Carta(){
                     <Rate tooltips={desc} onChange={setMiHumor} value={miHumor} />
                     {miHumor ? <span className="ant-rate-text">{desc[miHumor - 1]}</span> : ''}
                     </span>
-                    </p>
-                </div>
-                </div>
-            </div>
-            <div class="col">
-                <div class="card h-100 cartita">
-                <div class="card-body">
-                    <h5 class="card-title ">Mis metas hoy</h5>
-                    <p class="card-text">
-                        <TextArea/>
                     </p>
                 </div>
                 </div>

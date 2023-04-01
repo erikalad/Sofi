@@ -26,3 +26,11 @@
     background-color:#8f6277 !important
 }
 
+.boton{
+    background-color: #fabfb7 !important;
+}
+
+.boton:hover{
+    background-color: #8f6277 !important;
+}
+
