@@ -64,17 +64,11 @@ export default function Carta(){
             <h1 className="dia">{mostrarDiaActual()}</h1>
             
             <spline-viewer url="https://prod.spline.design/FVZWbQH2B6ndj9UU/scene.splinecode" events-target="global"></spline-viewer>
-          {/*   <div>
-               
-                <div className="card contenedor">
-                 <h2 className="metas card-header">Mis metas hoy</h2>
-                 <div className="card-body"></div>
-                </div>
-            </div> */}
+    
 
             <div class="row row-cols-1 row-cols-md-3 g-4">
             <div class="col">
-                <div class="card h-100 cartita">
+                <div class="card h-100 cartita numero1">
                 <div class="card-body">
                     <h5 class="card-title ">Mis metas hoy</h5>
                     <p class="card-text">
@@ -87,7 +81,7 @@ export default function Carta(){
                 </div>
             </div>
             <div class="col">
-                <div class="card h-100 cartita">
+                <div class="card h-100 cartita numero2">
                 <div class="card-body">
                     <h5 class="card-title ">Energía</h5>
                     <p class="card-text">
@@ -97,7 +91,7 @@ export default function Carta(){
                 </div>
             </div>
             <div class="col">
-                <div class="card h-100 cartita">
+                <div class="card h-100 cartita numero3">
                 <div class="card-body">
                     <h5 class="card-title ">Como fue tu dia?</h5>
                     <p class="card-text">
