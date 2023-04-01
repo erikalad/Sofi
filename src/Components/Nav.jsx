@@ -12,9 +12,9 @@ export default function Nav(){
             </button>
             <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
             <div class="navbar-nav">
-                <a class="nav-link active" aria-current="page" href="#">Home</a>
-                <a class="nav-link" href="#">Features</a>
-                <a class="nav-link" href="#">Pricing</a>
+                <a class="nav-link active" aria-current="page" href="#">Inicio</a>
+                <a class="nav-link" href="#">Mis Metas</a>
+                <a class="nav-link" href="#">Mis estados de ánimo</a>
           
             </div>
             </div>

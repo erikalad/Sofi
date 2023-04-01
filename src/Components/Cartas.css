@@ -19,11 +19,14 @@
     text-align: center;
     justify-content: center;
     align-items: center;
-    margin: 5rem;
+    margin-bottom: 5rem;
+    margin-right: 5rem;
+    margin-left: 5rem;
 }
 
 .switch{
-    background-color:#8f6277 !important
+    background-color:#8f6277 !important;
+    margin-top: 1rem;
 }
 
 .boton{
@@ -44,4 +47,9 @@
 
 .numero3{
     background-color:  #e5ffe26b !important;
+}
+
+.oscuro{
+    background-color: black;
+    color:white
 }

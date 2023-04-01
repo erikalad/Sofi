@@ -22,19 +22,15 @@ const customIcons = {
 
 
 
-export default function Carta(){
+export default function Carta(modo){
 
-    
-    const [value, setValue] = useState(3);
 
-    const onChange = (checked) => {
-        console.log(`switch to ${checked}`);
-      };
 
       function mostrarDiaActual() {
         const fecha = new Date(); // obtiene la fecha actual
         const diasSemana = ['Domingo', 'Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado'];
-        const diaActual = diasSemana[fecha.getDay()]; // obtiene el día actual como un número del 0 al 6 y lo convierte en el nombre del día correspondiente
+        const diaActual = diasSemana[fecha.getDay()]; 
+      // obtiene el día actual como un número del 0 al 6 y lo convierte en el nombre del día correspondiente
         return(`Hoy es ${diaActual}`); // muestra el día actual en la consola
       }
 
@@ -44,7 +40,7 @@ export default function Carta(){
       const [miHumor, setMiHumor] = useLocalStorage("humor",1)
       const [metas, setMetas] = useState("")
 
-    
+      
 
       function valueMetas(e){
       setMetas(e.target.value)
@@ -57,8 +53,8 @@ export default function Carta(){
 
     return(
         
-        <div className="contenedor">
-            <Switch defaultChecked onChange={onChange} className="switch"/>
+        <div className={`${(modo ? "contenedor" : 'contenedor oscuro')}`}>
+            
             <br></br>
 
             <h1 className="dia">{mostrarDiaActual()}</h1>
@@ -68,7 +64,7 @@ export default function Carta(){
 
             <div class="row row-cols-1 row-cols-md-3 g-4">
             <div class="col">
-                <div class="card h-100 cartita numero1">
+                <div className={`${(modo ? "card h-100 cartita numero1" : 'card h-100 cartita oscuro')}`}>
                 <div class="card-body">
                     <h5 class="card-title ">Mis metas hoy</h5>
                     <p class="card-text">
@@ -81,7 +77,7 @@ export default function Carta(){
                 </div>
             </div>
             <div class="col">
-                <div class="card h-100 cartita numero2">
+                <div className={`${(modo ? "card h-100 cartita numero2" : 'card h-100 cartita oscuro')}`}>
                 <div class="card-body">
                     <h5 class="card-title ">Energía</h5>
                     <p class="card-text">
@@ -91,7 +87,7 @@ export default function Carta(){
                 </div>
             </div>
             <div class="col">
-                <div class="card h-100 cartita numero3">
+                <div className={`${(modo ? "card h-100 cartita numero3" : 'card h-100 cartita oscuro')}`}>
                 <div class="card-body">
                     <h5 class="card-title ">Como fue tu dia?</h5>
                     <p class="card-text">
