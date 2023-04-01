@@ -7,7 +7,7 @@ export default function MisMetas(){
 
     return(
         <div>
-            
+             Proximamente..
         </div>
     )
 }
