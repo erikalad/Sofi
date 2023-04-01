@@ -7,7 +7,7 @@ import { useState } from 'react';
 import { Switch , Button} from 'antd';
 import useLocalStorage from "./useLocalStorage";
 import { BsCheckLg } from 'react-icons/bs';
-
+import audio from './tiktok-otaku.mp3'
 
 
 const desc = ['Terrible', 'Malo', 'Normal', 'Bien', 'Hermoso'];
@@ -29,8 +29,7 @@ export default function Carta(modo){
       function mostrarDiaActual() {
         const fecha = new Date(); // obtiene la fecha actual
         const diasSemana = ['Domingo', 'Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado'];
-        const diaActual = diasSemana[fecha.getDay()]; 
-      // obtiene el día actual como un número del 0 al 6 y lo convierte en el nombre del día correspondiente
+        const diaActual = diasSemana[fecha.getDay()];// obtiene el día actual como un número del 0 al 6 y lo convierte en el nombre del día correspondiente
         return(`Hoy es ${diaActual}`); // muestra el día actual en la consola
       }
 
@@ -40,6 +39,10 @@ export default function Carta(modo){
       const [miHumor, setMiHumor] = useLocalStorage("humor",1)
       const [metas, setMetas] = useState("")
 
+
+      const miArray = [""];
+
+        localStorage.setItem("miArray", JSON.stringify(miArray));
       
 
       function valueMetas(e){
@@ -54,7 +57,10 @@ export default function Carta(modo){
     return(
         
         <div className={`${(modo ? "contenedor" : 'contenedor oscuro')}`}>
-            
+             <audio class="mejs__player" controls preload autoplay="true" id="au">
+                <source src={audio} type="audio/mp3" autoplay="true"/>
+                    Tu navegador no soporta audio HTML5.
+                </audio>
             <br></br>
 
             <h1 className="dia">{mostrarDiaActual()}</h1>

@@ -18,7 +18,7 @@ function App() {
   return (
     <div className="App">
       <Nav />
-      <Switch defaultChecked onChange={onChange} className="switch" />
+     {/*  <Switch defaultChecked onChange={onChange} className="switch" /> */}
       <Routes>
         <Route path="/" element={<Carta modo={modo} />} />
         <Route path="/misMetas" element={<MisMetas/>} />

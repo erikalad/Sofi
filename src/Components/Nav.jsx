@@ -1,9 +1,10 @@
 import React from "react"
 import './Nav.css'
 import img from './../Imagenes/sofia.png'
-import { Link, NavLink } from "react-router-dom"
-import MisMetas from "./MisMetas"
+import { Link } from "react-router-dom"
 import { useLocation } from 'react-router-dom';
+
+
 
 export default function Nav(){
 
@@ -47,6 +48,7 @@ export default function Nav(){
                 >
                   Mis estados de ánimo
                 </Link>
+               
               </div>
             </div>
           </div>

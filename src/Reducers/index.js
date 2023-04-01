@@ -1,6 +1,6 @@
 const initialState = {
-
-    
+ metas : [],
+ animos : []
 }
 
 function rootReducer (state = initialState, action) {
