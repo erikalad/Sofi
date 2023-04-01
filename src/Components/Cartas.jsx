@@ -84,7 +84,7 @@ export default function Carta(){
                     <p class="card-text">
                     <span>
                     <Rate tooltips={desc} onChange={setMiHumor} value={miHumor} />
-                    {value ? <span className="ant-rate-text">{desc[value - 1]}</span> : ''}
+                    {miHumor ? <span className="ant-rate-text">{desc[miHumor - 1]}</span> : ''}
                     </span>
                     </p>
                 </div>
