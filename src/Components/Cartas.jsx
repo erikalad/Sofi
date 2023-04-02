@@ -101,7 +101,7 @@ export default function Carta(modo){
                     <Form onFinish={onFinishMetas}>
                     <FormItem name="metas">
                     <p class="card-text">
-                        <TextArea value={metas}  placeholder="Escribí tus metas" onChange={(e)=>valueMetas(e)}/>
+                        <TextArea value={metas}  placeholder="Escribí tus metas" onChange={(e)=>valueMetas(e)} className="textarea"/>
                     </p>
                     </FormItem>
                     <Button type="primary" htmlType="submit" shape="circle" className="boton">
@@ -154,7 +154,7 @@ export default function Carta(modo){
                     <Form onFinish={onFinish}>
                     <FormItem name="agradecimiento">
                     <p class="card-text">
-                    <TextArea name="agradecimiento" value={agra}  placeholder="Escribí tus agradecimientos" onChange={(e)=>valueAgradecimiento(e)}/>
+                    <TextArea name="agradecimiento" value={agra}  className="textarea" placeholder="Escribí tus agradecimientos" onChange={(e)=>valueAgradecimiento(e)}/>
                     </p>
                     </FormItem>
                     <Button type="primary" htmlType="submit" shape="circle" className="boton">
