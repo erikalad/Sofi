@@ -2,12 +2,14 @@ import React from "react";
 import './Cartas.css'
 import TextArea from "antd/es/input/TextArea";
 import { FrownOutlined, MehOutlined, SmileOutlined } from '@ant-design/icons';
-import { Rate } from 'antd';
+import { Form, Rate } from 'antd';
 import { useState } from 'react';
 import { Switch , Button} from 'antd';
 import useLocalStorage from "./useLocalStorage";
 import { BsCheckLg } from 'react-icons/bs';
-
+import { TbHeartHandshake } from 'react-icons/tb'
+import { Divider, List, Typography } from 'antd';
+import FormItem from "antd/es/form/FormItem";
 
 
 const desc = ['Terrible', 'Malo', 'Normal', 'Bien', 'Hermoso'];
@@ -19,6 +21,14 @@ const customIcons = {
     4: <SmileOutlined />,
     5: <SmileOutlined />,
   };
+
+  const data = [
+    'Racing car sprays burning fuel into crowd.',
+    'Japanese princess to wed commoner.',
+    'Australian walks 100km after outback crash.',
+    'Man charged over missing wedding girl.',
+    'Los Angeles battles huge wildfires.',
+  ];
 
 
 
@@ -38,7 +48,10 @@ export default function Carta(modo){
       const [miEnergia, setMiEnergia] = useLocalStorage("energia",1)
       const [miHumor, setMiHumor] = useLocalStorage("humor",1)
       const [metas, setMetas] = useState("")
-
+      const [agradecimiento, setAgradecimiento] = useState([]);
+      const [metasList, setMetasList] = useState([]);
+      const [agra, setAgra] = useState("")
+      
 
       const miArray = [""];
 
@@ -50,9 +63,24 @@ export default function Carta(modo){
       setMisMetas(e.target.value)
       }
 
-      function handleMetas(){
-      setMetas("")
+      function onFinishMetas(values){
+        setMetas(values.metas)
+        setMisMetas(values.metas)
+        setMetasList([...metasList, values.metas]);
+        setMetas("")
       }
+
+      function valueAgradecimiento(e){
+        setAgra(e.target.value)
+        
+      }
+
+      function onFinish(values){
+    
+        setAgradecimiento([...agradecimiento, values.agradecimiento]);
+        setAgra("")
+      }
+
 
     return(
         
@@ -70,12 +98,28 @@ export default function Carta(modo){
                 <div className={`${(modo ? "card h-100 cartita numero1" : 'card h-100 cartita oscuro')}`}>
                 <div class="card-body">
                     <h5 class="card-title ">Mis metas hoy</h5>
+                    <Form onFinish={onFinishMetas}>
+                    <FormItem name="metas">
                     <p class="card-text">
                         <TextArea value={metas}  placeholder="Escribí tus metas" onChange={(e)=>valueMetas(e)}/>
                     </p>
-                    <Button type="primary" shape="circle" className="boton" onClick={handleMetas}>
+                    </FormItem>
+                    <Button type="primary" htmlType="submit" shape="circle" className="boton">
                         <BsCheckLg/>
                     </Button>
+                    </Form>
+                    {
+                    metasList.length !== 0 && 
+                    <div>
+                            <List
+                            size="small"
+                            bordered
+                            dataSource={metasList}
+                            renderItem={(item) => <List.Item>{item}</List.Item>}
+                            />
+
+                    </div>
+                    }
                 </div>
                 </div>
             </div>
@@ -102,6 +146,36 @@ export default function Carta(modo){
                 </div>
                 </div>
             </div>  
+
+            <div class="col">
+                <div className={`${(modo ? "card h-100 cartita numero3" : 'card h-100 cartita oscuro')}`}>
+                <div class="card-body">
+                    <h5 class="card-title ">Agradezco por <TbHeartHandshake/></h5>
+                    <Form onFinish={onFinish}>
+                    <FormItem name="agradecimiento">
+                    <p class="card-text">
+                    <TextArea name="agradecimiento" value={agra}  placeholder="Escribí tus agradecimientos" onChange={(e)=>valueAgradecimiento(e)}/>
+                    </p>
+                    </FormItem>
+                    <Button type="primary" htmlType="submit" shape="circle" className="boton">
+                        <BsCheckLg/>
+                    </Button>
+                    </Form>
+                    {
+                    agradecimiento.length !== 0 && 
+                    <div>
+                            <List
+                            size="small"
+                            bordered
+                            dataSource={agradecimiento}
+                            renderItem={(item) => <List.Item>{item}</List.Item>}
+                            />
+
+                    </div>
+                    }
+                </div>
+                </div>
+            </div> 
             </div>
         </div>
 

@@ -31,6 +31,7 @@
 
 .boton{
     background-color: #fabfb7 !important;
+    margin-bottom: 1.5rem;
 }
 
 .boton:hover{
