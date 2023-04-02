@@ -42,30 +42,35 @@ export default function Carta(modo){
         const diaActual = diasSemana[fecha.getDay()];// obtiene el día actual como un número del 0 al 6 y lo convierte en el nombre del día correspondiente
         return(`Hoy es ${diaActual}`); // muestra el día actual en la consola
       }
+      const arrLocal = localStorage.getItem('metas');
+      const miValor = JSON.parse(arrLocal);
 
+      const arrLocalAgra = localStorage.getItem('agradecimiento');
+      const miValorAgra = JSON.parse(arrLocalAgra);
       
-      const [misMetas, setMisMetas] = useLocalStorage("metas","")
+      const [misMetas, setMisMetas] = useLocalStorage("metas",[])
       const [miEnergia, setMiEnergia] = useLocalStorage("energia",1)
       const [miHumor, setMiHumor] = useLocalStorage("humor",1)
+      const [misAgra, setMisAgra] = useLocalStorage("agradecimiento",[])
       const [metas, setMetas] = useState("")
-      const [agradecimiento, setAgradecimiento] = useState([]);
-      const [metasList, setMetasList] = useState([]);
+      const [agradecimiento, setAgradecimiento] = useState(miValorAgra);
+      const [metasList, setMetasList] = useState(miValor);
       const [agra, setAgra] = useState("")
       
 
       const miArray = [""];
-
-        localStorage.setItem("miArray", JSON.stringify(miArray));
       
+        localStorage.setItem("miArray", JSON.stringify(miArray));
+    
 
       function valueMetas(e){
       setMetas(e.target.value)
-      setMisMetas(e.target.value)
+      /* setMisMetas(e.target.value) */
       }
 
       function onFinishMetas(values){
         setMetas(values.metas)
-        setMisMetas(values.metas)
+        setMisMetas([...misMetas, values.metas]);
         setMetasList([...metasList, values.metas]);
         setMetas("")
       }
@@ -109,7 +114,7 @@ export default function Carta(modo){
                     </Button>
                     </Form>
                     {
-                    metasList.length !== 0 && 
+                    metasList.length !== 0 ? 
                     <div>
                             <List
                             size="small"
@@ -118,7 +123,7 @@ export default function Carta(modo){
                             renderItem={(item) => <List.Item>{item}</List.Item>}
                             />
 
-                    </div>
+                    </div> : null
                     }
                 </div>
                 </div>
@@ -162,7 +167,7 @@ export default function Carta(modo){
                     </Button>
                     </Form>
                     {
-                    agradecimiento.length !== 0 && 
+                    agradecimiento.length !== 0 ? 
                     <div>
                             <List
                             size="small"
@@ -171,7 +176,7 @@ export default function Carta(modo){
                             renderItem={(item) => <List.Item>{item}</List.Item>}
                             />
 
-                    </div>
+                    </div> : null
                     }
                 </div>
                 </div>
