@@ -7,7 +7,7 @@ import { useState } from 'react';
 import { Switch , Button} from 'antd';
 import useLocalStorage from "./useLocalStorage";
 import { BsCheckLg } from 'react-icons/bs';
-import audio from './tiktok-otaku.mp3'
+
 
 
 const desc = ['Terrible', 'Malo', 'Normal', 'Bien', 'Hermoso'];
@@ -57,10 +57,7 @@ export default function Carta(modo){
     return(
         
         <div className={`${(modo ? "contenedor" : 'contenedor oscuro')}`}>
-             <audio class="mejs__player" controls preload autoplay="true" id="au">
-                <source src={audio} type="audio/mp3" autoplay="true"/>
-                    Tu navegador no soporta audio HTML5.
-                </audio>
+             
             <br></br>
 
             <h1 className="dia">{mostrarDiaActual()}</h1>
