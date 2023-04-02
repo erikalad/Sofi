@@ -1,13 +1,11 @@
 import React from "react";
 
 export default function MisMetas(){
-    
-    
-
+  
 
     return(
         <div>
-             Proximamente..
+          <spline-viewer url="https://prod.spline.design/UWoeqiir20o49Dah/scene.splinecode"></spline-viewer>
         </div>
     )
 }
