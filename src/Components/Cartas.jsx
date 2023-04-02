@@ -42,25 +42,24 @@ export default function Carta(modo){
         const diaActual = diasSemana[fecha.getDay()];// obtiene el día actual como un número del 0 al 6 y lo convierte en el nombre del día correspondiente
         return(`Hoy es ${diaActual}`); // muestra el día actual en la consola
       }
-      const arrLocal = localStorage.getItem('metas');
-      const miValor = JSON.parse(arrLocal);
-
-      const arrLocalAgra = localStorage.getItem('agradecimiento');
-      const miValorAgra = JSON.parse(arrLocalAgra);
-      
-      const [misMetas, setMisMetas] = useLocalStorage("metas",[])
+      const [misMetas, setMisMetas] = useLocalStorage("metas",["q"])
       const [miEnergia, setMiEnergia] = useLocalStorage("energia",1)
       const [miHumor, setMiHumor] = useLocalStorage("humor",1)
-      const [misAgra, setMisAgra] = useLocalStorage("agradecimiento",[])
+      const [misAgra, setMisAgra] = useLocalStorage("agradecimiento",["qw"])
+      
       const [metas, setMetas] = useState("")
-      const [agradecimiento, setAgradecimiento] = useState(miValorAgra);
-      const [metasList, setMetasList] = useState(miValor);
+      const [agradecimiento, setAgradecimiento] = useState([])
+      const [metasList, setMetasList] = useState([])
       const [agra, setAgra] = useState("")
       
-
       const miArray = [""];
+      localStorage.setItem("miArray", JSON.stringify(miArray));
       
-        localStorage.setItem("miArray", JSON.stringify(miArray));
+      const arrLocal = localStorage.getItem('metas');
+      const miValor = JSON.parse(arrLocal);
+      
+      const arrLocalAgra = localStorage.getItem('agradecimiento');
+      const miValorAgra = JSON.parse(arrLocalAgra);
     
 
       function valueMetas(e){
