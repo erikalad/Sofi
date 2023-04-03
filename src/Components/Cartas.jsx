@@ -8,6 +8,7 @@ import { Switch , Button} from 'antd';
 import useLocalStorage from "./useLocalStorage";
 import { BsCheckLg } from 'react-icons/bs';
 import { TbHeartHandshake } from 'react-icons/tb'
+import { AiFillDelete } from 'react-icons/ai'
 import { Divider, List, Typography } from 'antd';
 import FormItem from "antd/es/form/FormItem";
 
@@ -45,26 +46,28 @@ export default function Carta(modo){
       const [misMetas, setMisMetas] = useLocalStorage("metas",["q"])
       const [miEnergia, setMiEnergia] = useLocalStorage("energia",1)
       const [miHumor, setMiHumor] = useLocalStorage("humor",1)
-      const [misAgra, setMisAgra] = useLocalStorage("agradecimiento",["qw"])
+      const [misAgra, setMisAgra] = useLocalStorage("agradecimiento",[""])
       
-      const [metas, setMetas] = useState("")
-      const [agradecimiento, setAgradecimiento] = useState([])
-      const [metasList, setMetasList] = useState([])
-      const [agra, setAgra] = useState("")
-      
-      const miArray = [""];
-      localStorage.setItem("miArray", JSON.stringify(miArray));
-      
+
       const arrLocal = localStorage.getItem('metas');
       const miValor = JSON.parse(arrLocal);
       
       const arrLocalAgra = localStorage.getItem('agradecimiento');
       const miValorAgra = JSON.parse(arrLocalAgra);
+
+
+      const [metas, setMetas] = useState("")
+      const [agradecimiento, setAgradecimiento] = useState(miValorAgra)
+      const [metasList, setMetasList] = useState(miValor)
+      const [agra, setAgra] = useState("")
+      
+      
+      
     
 
       function valueMetas(e){
       setMetas(e.target.value)
-      /* setMisMetas(e.target.value) */
+      
       }
 
       function onFinishMetas(values){
@@ -82,6 +85,7 @@ export default function Carta(modo){
       function onFinish(values){
     
         setAgradecimiento([...agradecimiento, values.agradecimiento]);
+        setMisAgra([...misAgra, values.agradecimiento])
         setAgra("")
       }
 
@@ -119,7 +123,7 @@ export default function Carta(modo){
                             size="small"
                             bordered
                             dataSource={metasList}
-                            renderItem={(item) => <List.Item>{item}</List.Item>}
+                            renderItem={(item) => <List.Item><div className="lista"><p className="item">{item}</p> <p><AiFillDelete/></p></div></List.Item>}    
                             />
 
                     </div> : null
@@ -166,13 +170,13 @@ export default function Carta(modo){
                     </Button>
                     </Form>
                     {
-                    agradecimiento.length !== 0 ? 
+                    agradecimiento.length > 0 ? 
                     <div>
                             <List
                             size="small"
                             bordered
                             dataSource={agradecimiento}
-                            renderItem={(item) => <List.Item>{item}</List.Item>}
+                            renderItem={(item) => <List.Item><div className="lista"><p className="item">{item}</p> <p><AiFillDelete/></p></div></List.Item>}
                             />
 
                     </div> : null
