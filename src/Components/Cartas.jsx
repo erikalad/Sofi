@@ -43,17 +43,25 @@ export default function Carta(modo){
         const diaActual = diasSemana[fecha.getDay()];// obtiene el día actual como un número del 0 al 6 y lo convierte en el nombre del día correspondiente
         return(`Hoy es ${diaActual}`); // muestra el día actual en la consola
       }
+
+
+      localStorage.setItem("metas", JSON.stringify([""]));
+      localStorage.setItem("energia", JSON.stringify(1));
+      localStorage.setItem("humor", JSON.stringify(1));
+      localStorage.setItem("agradecimiento", JSON.stringify([""]))
+
+
       const [misMetas, setMisMetas] = useLocalStorage("metas",["q"])
       const [miEnergia, setMiEnergia] = useLocalStorage("energia",1)
       const [miHumor, setMiHumor] = useLocalStorage("humor",1)
       const [misAgra, setMisAgra] = useLocalStorage("agradecimiento",[""])
       
-/* 
+
       const arrLocal = localStorage.getItem('metas');
       const miValor = JSON.parse(arrLocal);
       
       const arrLocalAgra = localStorage.getItem('agradecimiento');
-      const miValorAgra = JSON.parse(arrLocalAgra); */
+      const miValorAgra = JSON.parse(arrLocalAgra); 
 
 
       const [metas, setMetas] = useState("")
