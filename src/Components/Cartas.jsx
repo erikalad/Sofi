@@ -80,15 +80,15 @@ export default function Carta(modo){
       }
 
       function valueAgradecimiento(e){
-        setAgra(e.target.value)
+        setAgradecimiento(e.target.value)
         
       }
 
       function onFinish(values){
     
-        setAgradecimiento([...agradecimiento, values.agradecimiento]);
+        setAgra([...agra, values.agradecimiento]);
         setMisAgra([...misAgra, values.agradecimiento])
-        setAgra("")
+        setAgradecimiento("")
       }
 
 
