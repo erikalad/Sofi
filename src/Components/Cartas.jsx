@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import './Cartas.css'
 import TextArea from "antd/es/input/TextArea";
 import { FrownOutlined, MehOutlined, SmileOutlined } from '@ant-design/icons';
@@ -43,19 +43,13 @@ export default function Carta(modo){
         const diaActual = diasSemana[fecha.getDay()];// obtiene el día actual como un número del 0 al 6 y lo convierte en el nombre del día correspondiente
         return(`Hoy es ${diaActual}`); // muestra el día actual en la consola
       }
-
-
-      localStorage.setItem("metas", JSON.stringify([""]));
-      localStorage.setItem("energia", JSON.stringify(1));
-      localStorage.setItem("humor", JSON.stringify(1));
-      localStorage.setItem("agradecimiento", JSON.stringify([""]))
-
-
-      const [misMetas, setMisMetas] = useLocalStorage("metas",["q"])
+      
+      const [misMetas, setMisMetas] = useLocalStorage("metas",[""])
       const [miEnergia, setMiEnergia] = useLocalStorage("energia",1)
       const [miHumor, setMiHumor] = useLocalStorage("humor",1)
       const [misAgra, setMisAgra] = useLocalStorage("agradecimiento",[""])
       
+
 
       const arrLocal = localStorage.getItem('metas');
       const miValor = JSON.parse(arrLocal);
@@ -66,8 +60,8 @@ export default function Carta(modo){
 
       const [metas, setMetas] = useState("")
       const [agradecimiento, setAgradecimiento] = useState([])
-      const [metasList, setMetasList] = useState([])
-      const [agra, setAgra] = useState("")
+      const [metasList, setMetasList] = useState(miValor)
+      const [agra, setAgra] = useState(miValorAgra)
       
       
       
@@ -164,7 +158,7 @@ export default function Carta(modo){
             </div>  
 
             <div class="col">
-                <div className={`${(modo ? "card h-100 cartita numero3" : 'card h-100 cartita oscuro')}`}>
+                <div className={`${(modo ? "card h-100 cartita numero4" : 'card h-100 cartita oscuro')}`}>
                 <div class="card-body">
                     <h5 class="card-title ">Agradezco por <TbHeartHandshake/></h5>
                     <Form onFinish={onFinish}>
