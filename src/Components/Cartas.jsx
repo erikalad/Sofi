@@ -44,10 +44,10 @@ export default function Carta(modo){
         return(`Hoy es ${diaActual}`); // muestra el día actual en la consola
       }
       
-      const [misMetas, setMisMetas] = useLocalStorage("metas",[""])
+      const [misMetas, setMisMetas] = useLocalStorage("metas",[])
       const [miEnergia, setMiEnergia] = useLocalStorage("energia",1)
       const [miHumor, setMiHumor] = useLocalStorage("humor",1)
-      const [misAgra, setMisAgra] = useLocalStorage("agradecimiento",[""])
+      const [misAgra, setMisAgra] = useLocalStorage("agradecimiento",[])
       
 
 
@@ -59,7 +59,7 @@ export default function Carta(modo){
 
 
       const [metas, setMetas] = useState("")
-      const [agradecimiento, setAgradecimiento] = useState([])
+      const [agradecimiento, setAgradecimiento] = useState("")
       const [metasList, setMetasList] = useState(miValor)
       const [agra, setAgra] = useState(miValorAgra)
       
@@ -164,7 +164,7 @@ export default function Carta(modo){
                     <Form onFinish={onFinish}>
                     <FormItem name="agradecimiento">
                     <p class="card-text">
-                    <TextArea name="agradecimiento" value={agra}  className="textarea" placeholder="Escribí tus agradecimientos" onChange={(e)=>valueAgradecimiento(e)}/>
+                    <TextArea name="agradecimiento" value={agradecimiento}  className="textarea" placeholder="Escribí tus agradecimientos" onChange={(e)=>valueAgradecimiento(e)}/>
                     </p>
                     </FormItem>
                     <Button type="primary" htmlType="submit" shape="circle" className="boton">
@@ -172,12 +172,12 @@ export default function Carta(modo){
                     </Button>
                     </Form>
                     {
-                    agradecimiento.length > 0 ? 
+                    agra.length > 0 ? 
                     <div>
                             <List
                             size="small"
                             bordered
-                            dataSource={agradecimiento}
+                            dataSource={agra}
                             renderItem={(item) => <List.Item><div className="lista"><p className="item">{item}</p> <p><AiFillDelete/></p></div></List.Item>}
                             />
 
