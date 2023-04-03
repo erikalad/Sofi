@@ -53,15 +53,19 @@ export default function Carta(modo){
 
       const arrLocal = localStorage.getItem('metas');
       const miValor = JSON.parse(arrLocal);
+      const [metasList, setMetasList] = useState(miValor)
+
+
+
       
       const arrLocalAgra = localStorage.getItem('agradecimiento');
       const miValorAgra = JSON.parse(arrLocalAgra); 
-
+      const [agra, setAgra] = useState(miValorAgra)
+      
 
       const [metas, setMetas] = useState("")
       const [agradecimiento, setAgradecimiento] = useState("")
-      const [metasList, setMetasList] = useState(miValor)
-      const [agra, setAgra] = useState(miValorAgra)
+     
       
       
       
@@ -89,6 +93,51 @@ export default function Carta(modo){
         setAgra([...agra, values.agradecimiento]);
         setMisAgra([...misAgra, values.agradecimiento])
         setAgradecimiento("")
+      }
+
+      function borrar(item){
+        console.log(item)
+      // Obtener el valor actual del LocalStorage para la clave "agradecimiento"
+        let metas = JSON.parse(localStorage.getItem("metas"));
+
+        // Definir la palabra a borrar
+        let palabraABorrar = item;
+
+        // Encontrar la posición de la palabra a borrar en el array
+        let posicion = metas.indexOf(palabraABorrar);
+
+        // Si la palabra se encontró en el array, eliminarla
+        if (posicion !== -1) {
+            metas.splice(posicion, 1);
+
+            setMetasList(metas)
+        }
+
+        // Guardar el nuevo valor en el LocalStorage
+       localStorage.setItem("metas", JSON.stringify(metas));
+
+      }
+
+      function borrarAgra(item){
+        // Obtener el valor actual del LocalStorage para la clave "agradecimiento"
+        let agradecimientos = JSON.parse(localStorage.getItem("agradecimiento"));
+
+        // Definir la palabra a borrar
+        let palabraABorrar = item;
+
+        // Encontrar la posición de la palabra a borrar en el array
+        let posicion = agradecimientos.indexOf(palabraABorrar);
+
+        // Si la palabra se encontró en el array, eliminarla
+        if (posicion !== -1) {
+        agradecimientos.splice(posicion, 1);
+
+        // Actualizar el estado del componente con el nuevo valor del array
+        setAgra(agradecimientos);
+        }
+
+        // Guardar el nuevo valor en el LocalStorage
+        localStorage.setItem("agradecimiento", JSON.stringify(agradecimientos));
       }
 
 
@@ -119,13 +168,13 @@ export default function Carta(modo){
                     </Button>
                     </Form>
                     {
-                    metasList.length !== 0 ? 
+                    metasList && metasList.length !== 0 ? 
                     <div>
                             <List
                             size="small"
                             bordered
                             dataSource={metasList}
-                            renderItem={(item) => <List.Item><div className="lista"><p className="item">{item}</p> <p><AiFillDelete/></p></div></List.Item>}    
+                            renderItem={(item) => <List.Item><div className="lista"><p className="item">{item}</p> <Button onClick={()=>borrar(item)}><AiFillDelete/></Button></div></List.Item>}    
                             />
 
                     </div> : null
@@ -178,7 +227,7 @@ export default function Carta(modo){
                             size="small"
                             bordered
                             dataSource={agra}
-                            renderItem={(item) => <List.Item><div className="lista"><p className="item">{item}</p> <p><AiFillDelete/></p></div></List.Item>}
+                            renderItem={(item) => <List.Item><div className="lista"><p className="item">{item}</p> <Button onClick={()=>borrarAgra(item)}><AiFillDelete/></Button></div></List.Item>}    
                             />
 
                     </div> : null
