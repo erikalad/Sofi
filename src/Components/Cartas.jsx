@@ -229,7 +229,7 @@ export default function Carta(modo){
                     </Button>
                     </Form>
                     {
-                    agra.length > 0 ? 
+                    agra && agra.length > 0 ? 
                     <div>
                             <List
                             size="small"
