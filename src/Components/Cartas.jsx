@@ -174,7 +174,15 @@ export default function Carta(modo){
                             size="small"
                             bordered
                             dataSource={metasList}
-                            renderItem={(item) => <List.Item><div className="lista"><p className="item">{item}</p> <Button onClick={()=>borrar(item)}><AiFillDelete/></Button></div></List.Item>}    
+                            renderItem={(item) => 
+                              <List.Item>
+                              <div className="lista">
+                                <p className="item-text">{item}</p>
+                                <Button onClick={() => borrar(item)} className="delete-button">
+                                  <AiFillDelete />
+                                </Button>
+                              </div>
+                            </List.Item>}    
                             />
 
                     </div> : null
