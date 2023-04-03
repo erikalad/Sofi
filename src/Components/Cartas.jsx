@@ -48,17 +48,17 @@ export default function Carta(modo){
       const [miHumor, setMiHumor] = useLocalStorage("humor",1)
       const [misAgra, setMisAgra] = useLocalStorage("agradecimiento",[""])
       
-
+/* 
       const arrLocal = localStorage.getItem('metas');
       const miValor = JSON.parse(arrLocal);
       
       const arrLocalAgra = localStorage.getItem('agradecimiento');
-      const miValorAgra = JSON.parse(arrLocalAgra);
+      const miValorAgra = JSON.parse(arrLocalAgra); */
 
 
       const [metas, setMetas] = useState("")
-      const [agradecimiento, setAgradecimiento] = useState(miValorAgra)
-      const [metasList, setMetasList] = useState(miValor)
+      const [agradecimiento, setAgradecimiento] = useState([])
+      const [metasList, setMetasList] = useState([])
       const [agra, setAgra] = useState("")
       
       
