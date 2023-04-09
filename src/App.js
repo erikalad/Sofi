@@ -7,6 +7,9 @@ import { Route , Routes } from "react-router-dom";
 import MisMetas from './Components/MisMetas';
 import MisAnimos from './Components/MisAnimos';
 import audio from './tiktok-otaku.mp3'
+import Grafico from './Components/Graficos';
+import MyNivoCharts from './Components/Minimalkit';
+import Lista from './Components/Lista';
 
 function App() {
   const [modo, setModo] = useState(true)
@@ -28,6 +31,9 @@ function App() {
         <Route path="/" element={<Carta modo={modo} />} />
         <Route path="/misMetas" element={<MisMetas/>} />
         <Route path="/misAnimos" element={<MisAnimos/>} />
+        <Route path="/graficos" element={<Grafico/>} />
+        <Route path="/grafi" element={<MyNivoCharts/>}/>
+        <Route path="/lista" element={<Lista/>}/>
       </Routes>
     </div>
   );
